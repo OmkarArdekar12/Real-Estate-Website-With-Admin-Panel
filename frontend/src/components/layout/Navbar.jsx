@@ -20,12 +20,12 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", icon: <FaHome />, link: "/" },
-    { name: "Overview", icon: <FaBuilding />, link: "#overview" },
-    { name: "Connectivity", icon: <FaMapMarkerAlt />, link: "#connectivity" },
-    { name: "Amenities", icon: <FaSwimmingPool />, link: "#amenities" },
-    { name: "About", icon: <FaInfoCircle />, link: "#about" },
-    { name: "Construction", icon: <FaHardHat />, link: "#construction" },
-    { name: "FAQ", icon: <FaQuestionCircle />, link: "#faq" },
+    { name: "Overview", icon: <FaBuilding />, link: "/#overview" },
+    { name: "Connectivity", icon: <FaMapMarkerAlt />, link: "/#connectivity" },
+    { name: "Amenities", icon: <FaSwimmingPool />, link: "/#amenities" },
+    { name: "About", icon: <FaInfoCircle />, link: "/#about" },
+    { name: "Construction", icon: <FaHardHat />, link: "/#construction" },
+    { name: "FAQ", icon: <FaQuestionCircle />, link: "/#faq" },
   ];
 
   return (
@@ -45,7 +45,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center space-x-6">
           {navItems.map((item, index) =>
-            item.link.startsWith("/") ? (
+            item.name === "Home" ? (
               <NavLink
                 key={index}
                 to={item.link}
