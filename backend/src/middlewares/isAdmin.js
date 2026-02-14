@@ -12,7 +12,7 @@ export const isAdmin = (req, res, next) => {
 
   const token = authHeader.split(" ")[1];
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.SESSION_SECRET);
 
     if (decoded.role === "admin") {
       return next();
