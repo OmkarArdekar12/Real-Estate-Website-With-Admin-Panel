@@ -5,6 +5,7 @@ import AdminDashboard from "./pages/AdminDashboard.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
+import NotFound from "./components/layout/NotFound.jsx";
 import CustomToaster from "./components/common/CustomNotification.jsx";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
@@ -38,6 +39,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
