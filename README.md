@@ -1,6 +1,6 @@
-<h1 align="center">Real Estate Website With Admin Panel</h1>
+<h1 align="center" id="start">Real Estate Website With Admin Panel</h1>
 
-<h2 align="center"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> RealEstate - Rising Beyond Horizons</h2>
+<h2 align="center" id="title"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> RealEstate - Rising Beyond Horizons</h2>
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=purple&labelColor=111111" />
@@ -19,13 +19,13 @@
   <img src="https://img.shields.io/badge/Render-0F172A?style=for-the-badge&logo=render&logoColor=46E3B7&labelColor=000000" />
 </p>
 
-<h2>Description</h2>
+<h2 id="about">Description</h2>
 
 <h3>
 Real Estate is a full-stack, production-ready real estate showcase platform with an integrated custom Content Management System (CMS) built specifically for dynamic project presentation.<br/> The platform enables real estate companies to manage, update, and publish project content without modifying the source code. It provides a seamless experience for both end users and administrators, ensuring scalable content control, secure access, and cloud-based media management.
 </h3>
 
-<h2>Live URLs</h2>
+<h2 id="live">Live URLs</h2>
 
 <h3>
 <a href="https://realestate-horizons.vercel.app" target="_blank">&#128970; Frontend: https://realestate-horizons.vercel.app</a>
@@ -33,7 +33,7 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
 <a href="https://realestate-horizons.onrender.com" target="_blank">&#128970; Backend: https://realestate-horizons.onrender.com</a>
 </h3>
 
-<h2>Features</h2>
+<h2 id="features">Features</h2>
 
 <h3>
 <table border="1" cellpadding="12" cellspacing="0" width="100%">
@@ -100,7 +100,7 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
 </table>
 </h3>
 
-<h2>Technologies & Architecture Overview</h2>
+<h2 id="tech">Technologies & Architecture Overview</h2>
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
   <thead>
@@ -202,7 +202,124 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
   </tbody>
 </table>
 
-<h2>Installation Guide</h2>
+<h2 id="structure">Folders and Files Structure</h2>
+
+```bash
+REAL-ESTATE-WEBSITE-WITH-ADMIN-PANEL
+│
+├── backend
+│   ├── node_modules
+│   ├── src
+│   │   ├── config
+│   │   │   ├── cloudinary.js
+│   │   │   └── dbConnect.js
+│   │   │
+│   │   ├── controllers
+│   │   │   ├── adminController.js
+│   │   │   ├── amenityController.js
+│   │   │   ├── constructionController.js
+│   │   │   ├── faqController.js
+│   │   │   ├── heroController.js
+│   │   │   └── sectionController.js
+│   │   │
+│   │   ├── middlewares
+│   │   │   ├── errorHandler.js
+│   │   │   └── isAdmin.js
+│   │   │
+│   │   ├── models
+│   │   │   ├── amenity.model.js
+│   │   │   ├── constructionUpdate.model.js
+│   │   │   ├── faq.model.js
+│   │   │   ├── hero.model.js
+│   │   │   └── section.model.js
+│   │   │
+│   │   ├── routes
+│   │   │   ├── adminRoutes.js
+│   │   │   ├── amenityRoutes.js
+│   │   │   ├── constructionRoutes.js
+│   │   │   ├── faqRoutes.js
+│   │   │   ├── heroRoutes.js
+│   │   │   └── sectionRoutes.js
+│   │   │
+│   │   └── index.js
+│   │
+│   ├── .env
+│   ├── package.json
+│   └── package-lock.json
+│
+├── frontend
+│   ├── node_modules
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── Logo.png
+│   │   └── RealEstateLogo.png
+│   │
+│   ├── src
+│   │   ├── api
+│   │   │   └── axios.js
+│   │   │
+│   │   ├── assets
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo.png
+│   │   │   └── RealEstateLogo.png
+│   │   │
+│   │   ├── components
+│   │   │   ├── admin
+│   │   │   │   ├── AboutForm.jsx
+│   │   │   │   ├── AmenityForm.jsx
+│   │   │   │   ├── ConstructionUpdatesForm.jsx
+│   │   │   │   ├── FaqForm.jsx
+│   │   │   │   ├── HeroForm.jsx
+│   │   │   │   ├── NearbyConnectivityForm.jsx
+│   │   │   │   └── OverviewForm.jsx
+│   │   │   │
+│   │   │   ├── common
+│   │   │   │   ├── ButtonLoader.jsx
+│   │   │   │   ├── CustomNotification.jsx
+│   │   │   │   ├── FullScreenLoader.jsx
+│   │   │   │   └── SectionLoader.jsx
+│   │   │   │
+│   │   │   ├── layout
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   └── Navbar.jsx
+│   │   │   │
+│   │   │   └── public
+│   │   │       ├── AboutSection.jsx
+│   │   │       ├── Amenities.jsx
+│   │   │       ├── ConnectivitySection.jsx
+│   │   │       ├── ConstructionSection.jsx
+│   │   │       ├── FAQ.jsx
+│   │   │       ├── HeroSection.jsx
+│   │   │       └── OverviewSection.jsx
+│   │   │
+│   │   ├── context
+│   │   │   └── AuthContext.jsx
+│   │   │
+│   │   ├── pages
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   ├── AdminLogin.jsx
+│   │   │   └── HomePage.jsx
+│   │   │
+│   │   ├── routes
+│   │   │   └── ProtectedRoute.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   ├── App.css
+│   │   └── index.css
+│   │
+│   ├── .env
+│   ├── vite.config.js
+│   ├── vercel.json
+│   ├── vite.config.json
+│   ├── package.json
+│   └── package-lock.json
+│
+├── .gitignore
+└── README.md
+```
+
+<h2 id="installation">Installation Guide</h2>
 
 #### 1. Clone the Repository
 
@@ -272,7 +389,7 @@ VITE_API_URL=http://localhost:8080/api or your_backend_api
 npm run dev
 ```
 
-<h2>Author</h2>
+<h2 id="author">Author</h2>
 <h3>Omkar Ardekar</h3>
 <p align="left">
 <a href="https://github.com/OmkarArdekar12" target="_blank">
