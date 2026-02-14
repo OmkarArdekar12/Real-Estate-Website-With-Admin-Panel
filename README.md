@@ -1,8 +1,8 @@
 <h1 align="center" id="start">Real Estate Website With Admin Panel</h1>
 
-<h2 align="center" id="title"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> RealEstate - Rising Beyond Horizons</h2>
+<h1 align="center" id="title"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> <a href="https://realestate-horizons.vercel.app" target="_blank">RealEstate - Rising Beyond Horizons</a></h1>
 
-<p align="center">
+<a href="https://realestate-horizons.vercel.app" align="center">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=purple&labelColor=111111" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=111111" />
   <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=111111" />
@@ -17,15 +17,34 @@
   <img src="https://img.shields.io/badge/Architecture-MVC-D4AF37?style=for-the-badge&labelColor=111111" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white&labelColor=111111" />
   <img src="https://img.shields.io/badge/Render-0F172A?style=for-the-badge&logo=render&logoColor=46E3B7&labelColor=000000" />
-</p>
+</a>
 
-<h2 id="about">Description</h2>
+<hr/>
+
+<h2 id="index"><a href="#start">Table of Contents</a></h2>
+<h3>
+<ul>
+  <li><a href="#about">Description</a></li>
+  <li><a href="#live">Live URLs</a></li>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#tech">Technologies & Architecture Overview</a></li>
+  <li><a href="#structure">Folders and Files Structure</a></li>
+  <li><a href="#installation">Installation Guide</a></li>
+  <li><a href="#author">Author</a></li>
+</ul>
+</h3>
+
+<hr/>
+
+<h2 id="about"><a href="#index">Description</a></h2>
 
 <h3>
 Real Estate is a full-stack, production-ready real estate showcase platform with an integrated custom Content Management System (CMS) built specifically for dynamic project presentation.<br/> The platform enables real estate companies to manage, update, and publish project content without modifying the source code. It provides a seamless experience for both end users and administrators, ensuring scalable content control, secure access, and cloud-based media management.
 </h3>
 
-<h2 id="live">Live URLs</h2>
+<hr/>
+
+<h2 id="live"><a href="#index">Live URLs</a></h2>
 
 <h3>
 <a href="https://realestate-horizons.vercel.app" target="_blank">&#128970; Frontend: https://realestate-horizons.vercel.app</a>
@@ -33,7 +52,9 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
 <a href="https://realestate-horizons.onrender.com" target="_blank">&#128970; Backend: https://realestate-horizons.onrender.com</a>
 </h3>
 
-<h2 id="features">Features</h2>
+<hr/>
+
+<h2 id="features"><a href="#index">Features</a></h2>
 
 <h3>
 <table border="1" cellpadding="12" cellspacing="0" width="100%">
@@ -100,7 +121,9 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
 </table>
 </h3>
 
-<h2 id="tech">Technologies & Architecture Overview</h2>
+<hr/>
+
+<h2 id="tech"><a href="#index">Technologies & Architecture Overview</a></h2>
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
   <thead>
@@ -202,7 +225,9 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
   </tbody>
 </table>
 
-<h2 id="structure">Folders and Files Structure</h2>
+<hr/>
+
+<h2 id="structure"><a href="#index">Folders and Files Structure</a></h2>
 
 ```bash
 REAL-ESTATE-WEBSITE-WITH-ADMIN-PANEL
@@ -281,7 +306,8 @@ REAL-ESTATE-WEBSITE-WITH-ADMIN-PANEL
 │   │   │   │
 │   │   │   ├── layout
 │   │   │   │   ├── Footer.jsx
-│   │   │   │   └── Navbar.jsx
+│   │   │   │   ├── Navbar.jsx
+│   │   │   │   └── NotFound.jsx
 │   │   │   │
 │   │   │   └── public
 │   │   │       ├── AboutSection.jsx
@@ -319,7 +345,9 @@ REAL-ESTATE-WEBSITE-WITH-ADMIN-PANEL
 └── README.md
 ```
 
-<h2 id="installation">Installation Guide</h2>
+<hr/>
+
+<h2 id="installation"><a href="#index">Installation Guide</a></h2>
 
 #### 1. Clone the Repository
 
@@ -389,7 +417,9 @@ VITE_API_URL=http://localhost:8080/api or your_backend_api
 npm run dev
 ```
 
-<h2 id="author">Author</h2>
+<hr/>
+
+<h2 id="author"><a href="#index">Author</a></h2>
 <h3>Omkar Ardekar</h3>
 <p align="left">
 <a href="https://github.com/OmkarArdekar12" target="_blank">
@@ -399,3 +429,6 @@ npm run dev
 <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
 </a>
 </p>
+
+<br/>
+<hr/><hr/>
