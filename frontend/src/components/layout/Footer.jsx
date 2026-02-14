@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="w-full bg-slate-900 text-gray-300 py-16 mt-20">
       <div className="w-full px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-          <img src="Logo.png" alt="Real Estate" className="h-40 w-auto" />
+          <img src="/Logo.png" alt="Real Estate" className="h-40 w-auto" />
           <p className="text-sm leading-relaxed">
             Building modern living spaces that redefine comfort, luxury, and
             urban connectivity.
