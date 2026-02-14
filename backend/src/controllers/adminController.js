@@ -13,6 +13,7 @@ export const loginAdmin = async (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
+  req.session.isAdmin = true;
   const token = jwt.sign(
     {
       email: process.env.ADMIN_EMAIL,
