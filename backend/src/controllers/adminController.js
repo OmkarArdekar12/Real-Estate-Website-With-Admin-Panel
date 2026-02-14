@@ -5,11 +5,6 @@ dotenv.config();
 
 export const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email);
-  console.log(password);
-  console.log();
-  console.log(process.env.ADMIN_EMAIL);
-  console.log(process.env.ADMIN_PASSWORD);
 
   if (
     email !== process.env.ADMIN_EMAIL ||
