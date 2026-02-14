@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SectionLoader from "../common/SectionLoader";
+import { motion } from "framer-motion";
 
 export default function AmenitiesSection() {
   const [amenities, setAmenities] = useState([]);
@@ -39,7 +40,14 @@ export default function AmenitiesSection() {
   }
 
   return (
-    <section id="amenities" className="w-full py-16">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.25, once: true }}
+      id="amenities"
+      className="w-full py-16"
+    >
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-serif font-bold">Amenities</h1>
         <p className="text-gray-600 mt-4">
@@ -77,6 +85,6 @@ export default function AmenitiesSection() {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </motion.section>
   );
 }
