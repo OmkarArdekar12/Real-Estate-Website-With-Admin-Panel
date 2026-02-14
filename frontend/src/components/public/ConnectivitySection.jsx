@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
+import API from "../../api/axios";
 
 export default function ConnectivitySection() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchConnectivity = async () => {
-    //   const res = await API.get("/sections/connectivity");
-    //   setData(res.data);
-    // };
-    // fetchConnectivity();
+    const fetchConnectivity = async () => {
+      try {
+        const res = await API.get("/sections/connectivity");
 
-    setData({
-      title: "Nearby Connectivity",
-      description:
-        "Located at the heart of the city, Infinity ensures seamless connectivity to schools, hospitals, shopping centers, and major transportation hubs, making daily life effortless and convenient.",
-      image: {
-        url: "https://images.unsplash.com/photo-1502673530728-f79b4cab31b1",
-      },
-    });
+        if (res.data) {
+          setData(res.data);
+        }
+      } catch (err) {
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchConnectivity();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full py-20 text-center">Loading Connectivity...</div>
+    );
+  }
 
   if (!data) {
     return null;
@@ -33,7 +42,7 @@ export default function ConnectivitySection() {
         <img
           className="w-full h-auto object-cover rounded-md"
           src={data?.image?.url}
-          alt=""
+          alt={data?.title}
         />
       </div>
 
@@ -41,6 +50,7 @@ export default function ConnectivitySection() {
         <h1 className="text-4xl md:text-6xl font-bold font-serif tracking-wide mb-4">
           {data.title}
         </h1>
+
         <p className="text-md md:text-lg mb-4 text-gray-200">
           {data.description}
         </p>
