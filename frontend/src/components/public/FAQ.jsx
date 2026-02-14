@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import { FaChevronDown } from "react-icons/fa";
+import SectionLoader from "../common/SectionLoader";
 
 export default function FaqSection() {
   const [faqs, setFaqs] = useState([]);
@@ -9,6 +10,7 @@ export default function FaqSection() {
 
   useEffect(() => {
     const fetchFaqs = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/faqs");
         if (res.data) setFaqs(res.data);
@@ -23,10 +25,12 @@ export default function FaqSection() {
   }, []);
 
   if (loading) {
-    return <div className="w-full py-20 text-center">Loading FAQs...</div>;
+    return <SectionLoader text="Loading FAQs..." />;
   }
 
-  if (!faqs.length) return null;
+  if (!faqs || !faqs.length) {
+    return;
+  }
 
   const toggleFaq = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
