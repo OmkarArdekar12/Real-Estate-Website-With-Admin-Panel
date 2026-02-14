@@ -5,9 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-slate-900 text-gray-300 py-16 mt-20">
       <div className="w-full px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-yellow-400 mb-4">
-            RealEstate
-          </h2>
+          <img src="Logo.png" alt="Real Estate" className="h-40 w-auto" />
           <p className="text-sm leading-relaxed">
             Building modern living spaces that redefine comfort, luxury, and
             urban connectivity.
@@ -16,6 +14,11 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold pb-4 text-white">Quick Links</h3>
           <ul className="space-y-2 text-sm">
+            <li>
+              <a href="#hero" className="hover:text-yellow-400">
+                Main
+              </a>
+            </li>
             <li>
               <a href="#overview" className="hover:text-yellow-400">
                 Overview
@@ -48,9 +51,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm">
+      <a
+        href="https://github.com/OmkarArdekar12/Real-Estate-Website-With-Admin-Panel"
+        className="block border-t border-gray-700 mt-12 pt-6 text-center text-sm hover:underline"
+      >
         © {new Date().getFullYear()} RealEstate. All rights reserved.
-      </div>
+      </a>
     </footer>
   );
 }
