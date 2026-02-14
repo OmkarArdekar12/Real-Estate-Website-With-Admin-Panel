@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
+import SectionLoader from "../common/SectionLoader";
 
 export default function AboutSection() {
   const [data, setData] = useState(null);
@@ -7,6 +8,7 @@ export default function AboutSection() {
 
   useEffect(() => {
     const fetchAbout = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/sections/about");
 
@@ -24,7 +26,7 @@ export default function AboutSection() {
   }, []);
 
   if (loading) {
-    return <div className="w-full py-20 text-center">Loading About...</div>;
+    return <SectionLoader text="Loading About..." />;
   }
 
   if (!data) {
