@@ -27,3 +27,5 @@ const amenitySchema = new mongoose.Schema(
 );
 
 const Amenity = mongoose.model("Amenity", amenitySchema);
+
+export default Amenity;
