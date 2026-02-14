@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -27,7 +28,19 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
-//Routes
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
+      maxAge: 3000 * 60 * 60,
+    },
+  }),
+);
+
 app.use("/api/hero", heroRoutes);
 app.use("/api/sections", sectionRoutes);
 app.use("/api/amenities", amenityRoutes);
