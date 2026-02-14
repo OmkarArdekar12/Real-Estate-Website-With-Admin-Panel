@@ -20,10 +20,12 @@ const app = express();
 connectToDatabase();
 
 const PORT = process.env.PORT || 8080;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+const FRONTEND_URL =
+  process.env.FRONTEND_URL || "https://realestate-horizons.vercel.app";
 
 const corsOptions = {
-  origin: FRONTEND_URL,
+  origin: [FRONTEND_URL],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   credentials: true,
 };
 app.use(cors(corsOptions));
