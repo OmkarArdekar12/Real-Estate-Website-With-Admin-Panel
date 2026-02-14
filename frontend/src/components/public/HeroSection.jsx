@@ -39,7 +39,7 @@ export default function HeroSection() {
   }
 
   return (
-    <header className="w-full flex flex-col md:flex-row items-center justify-between py-4">
+    <header className="w-full flex flex-col md:flex-row items-center justify-between py-4 px-8 md:px-10 lg:px-20">
       <div className="w-full md:max-w-[45%]">
         <img
           className="w-full object-cover h-auto rounded-md"
