@@ -56,3 +56,28 @@ p {
   display: flex;
   flex-direction: column;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #facc15 !important;
+  font-size: 40px !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #eab308 !important;
+}
+
+.swiper {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #d1d5db !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #facc15 !important;
+}
