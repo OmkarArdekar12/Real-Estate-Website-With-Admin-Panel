@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const hasVisited = localStorage.getItem("realestate_visited");
     if (!hasVisited) {
-      toast.success("Welcome to Real Estate — Rising Beyond Horizons", {
+      toast.success("Welcome to Real Estate", {
         id: "welcome-toast",
         duration: 4000,
       });
