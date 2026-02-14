@@ -2,8 +2,8 @@
 
 <h1 align="center" id="title"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> <a href="https://realestate-horizons.vercel.app" target="_blank">RealEstate - Rising Beyond Horizons</a></h1>
 
-<div align="center">
 <a href="https://realestate-horizons.vercel.app">
+<div align="center">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=purple&labelColor=111111" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=111111" />
   <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=111111" />
@@ -18,8 +18,8 @@
   <img src="https://img.shields.io/badge/Architecture-MVC-D4AF37?style=for-the-badge&labelColor=111111" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white&labelColor=111111" />
   <img src="https://img.shields.io/badge/Render-0F172A?style=for-the-badge&logo=render&logoColor=46E3B7&labelColor=000000" />
-</a>
 </div>
+</a>
 
 <hr/>
 
