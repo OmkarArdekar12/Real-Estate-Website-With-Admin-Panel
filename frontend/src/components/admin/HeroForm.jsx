@@ -120,7 +120,7 @@ export default function HeroForm() {
 
   return (
     <section className="w-full py-10 px-8 md:px-10 lg:px-20 bg-white ">
-      <h2 className="text-3xl font-serif font-bold mb-10">Edit Hero Section</h2>
+      <h2 className="text-3xl font-serif font-bold pb-4">Edit Hero Section</h2>
       <div className="flex flex-col md:flex-row gap-12 items-center">
         <div className="w-full md:w-[45%]">
           {preview ? (

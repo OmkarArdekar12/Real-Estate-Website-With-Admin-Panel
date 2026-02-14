@@ -111,7 +111,7 @@ export default function OverviewForm() {
 
   return (
     <section className="w-full py-10 px-8 md:px-10 lg:px-20 bg-white rounded-lg shadow-md">
-      <h2 className="text-3xl font-serif font-bold mb-10">
+      <h2 className="text-3xl font-serif font-bold pb-4">
         Edit Overview Section
       </h2>
 

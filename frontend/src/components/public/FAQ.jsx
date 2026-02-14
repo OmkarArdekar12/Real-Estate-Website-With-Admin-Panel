@@ -1,36 +1,32 @@
 import { useEffect, useState } from "react";
-// import API from "../../api/axios";
+import API from "../../api/axios";
 import { FaChevronDown } from "react-icons/fa";
 
 export default function FaqSection() {
   const [faqs, setFaqs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchFaqs = async () => {
-    //   const res = await API.get("/faqs");
-    //   setFaqs(res.data);
-    // };
-    // fetchFaqs();
+    const fetchFaqs = async () => {
+      try {
+        const res = await API.get("/faqs");
+        if (res.data) setFaqs(res.data);
+      } catch {
+        setFaqs([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setFaqs([
-      {
-        _id: "1",
-        question: "What is the possession date?",
-        answer: "The expected possession date is December 2026.",
-      },
-      {
-        _id: "2",
-        question: "Are there flexible payment plans?",
-        answer: "Yes, we offer flexible and convenient payment options.",
-      },
-      {
-        _id: "3",
-        question: "Is the project RERA approved?",
-        answer: "Yes, the project is fully RERA approved and compliant.",
-      },
-    ]);
+    fetchFaqs();
   }, []);
+
+  if (loading) {
+    return <div className="w-full py-20 text-center">Loading FAQs...</div>;
+  }
+
+  if (!faqs.length) return null;
 
   const toggleFaq = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
