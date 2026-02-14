@@ -54,15 +54,18 @@ export default function AboutForm() {
 
   const handleSave = async () => {
     if (!data.title.trim()) {
-      return toast.error("Title required", { id: "about-error" });
+      toast.error("Title required", { id: "about-error" });
+      return;
     }
 
     if (!data.description.trim()) {
-      return toast.error("Description required", { id: "about-error" });
+      toast.error("Description required", { id: "about-error" });
+      return;
     }
 
     if (!preview) {
-      return toast.error("Image required", { id: "about-error" });
+      toast.error("Image required", { id: "about-error" });
+      return;
     }
 
     try {
