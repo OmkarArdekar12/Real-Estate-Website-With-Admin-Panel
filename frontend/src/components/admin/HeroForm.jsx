@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function HeroForm() {
   const [hero, setHero] = useState({
@@ -32,7 +33,14 @@ export default function HeroForm() {
           setPreview(res.data.image?.url || "");
         }
       } catch (err) {
-        console.log("No hero found, admin can create.");
+        setHero({
+          title: "",
+          subtitle: "",
+          description: "",
+          image: null,
+        });
+        setPreview("");
+        toast.error("No hero found, admin can create.", { id: "hero-error" });
       } finally {
         setFetching(false);
       }
@@ -115,7 +123,7 @@ export default function HeroForm() {
   };
 
   if (fetching) {
-    return <div className="w-full py-20 text-center">Loading Hero...</div>;
+    return <SectionLoader text="Loading Hero..." />;
   }
 
   return (
