@@ -31,8 +31,16 @@ export default function Navbar() {
   return (
     <header className="bg-white shadow-md fixed w-full z-50">
       <nav className="w-full px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-yellow-400">
-          RealEstate
+        <Link
+          to="/"
+          className="flex flex-row items-end justify-center gap-1 font-bold text-yellow-400"
+        >
+          <img
+            src="/RealEstateLogo.png"
+            alt="Real Estate"
+            className="h-10 w-auto"
+          />
+          <span className="hidden sm:block text-xl">REAL ESTATE</span>
         </Link>
 
         <div className="hidden lg:flex items-center space-x-6">
