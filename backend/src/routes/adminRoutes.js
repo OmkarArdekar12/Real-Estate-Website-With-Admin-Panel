@@ -1,13 +1,11 @@
 import express from "express";
 import { loginAdmin, logoutAdmin } from "../controllers/adminController.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 
 const router = express.Router();
 
-router.get("/check", (req, res) => {
-  if (req.session.isAdmin) {
-    return res.json({ isAdmin: true });
-  }
-  res.json({ isAdmin: false });
+router.get("/check", isAdmin, (req, res) => {
+  return res.json({ isAdmin: true });
 });
 
 router.post("/login", loginAdmin);

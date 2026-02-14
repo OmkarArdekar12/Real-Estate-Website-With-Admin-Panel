@@ -6,24 +6,26 @@ dotenv.config();
 export const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@gmail.com";
-  const adminPassword = process.env.ADMIN_PASSWORD || "1234";
-
-  if (email === adminEmail && password === adminPassword) {
-    req.session.isAdmin = true;
-    const token = jwt.sign(
-      {
-        email: process.env.ADMIN_EMAIL,
-        role: "admin",
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "3h" },
-    );
-
-    return res.json({ message: "Login successful", token });
+  if (
+    email !== process.env.ADMIN_EMAIL ||
+    password !== process.env.ADMIN_PASSWORD
+  ) {
+    return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  return res.status(401).json({ message: "Invalid credentials" });
+  const token = jwt.sign(
+    {
+      email: process.env.ADMIN_EMAIL,
+      role: "admin",
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "3h" },
+  );
+
+  return res.json({
+    message: "Login successful",
+    token,
+  });
 };
 
 export const logoutAdmin = async (req, res) => {
