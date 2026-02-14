@@ -37,9 +37,7 @@ const mongoStore = MongoStore.create({
   mongoUrl: process.env.MONGODB_URI,
 });
 
-mongoStore.on("connected", () => {
-  console.log("RealEstate Mongo Session Store connected successfully");
-});
+app.set("trust proxy", 1);
 
 app.use(
   session({
@@ -50,6 +48,7 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
       maxAge: 1000 * 60 * 60 * 3,
     },
   }),
