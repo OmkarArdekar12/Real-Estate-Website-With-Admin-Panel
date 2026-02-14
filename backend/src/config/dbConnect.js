@@ -18,7 +18,7 @@ const dbConnect = () => {
   main()
     .then((mongodbConnection) => {
       console.log(
-        `Connected to MongoDB Database: ${mongodbConnection.connection.host}`,
+        `Connected to MongoDB RealEstate Database: ${mongodbConnection.connection.host}`,
       );
     })
     .catch((err) => {
