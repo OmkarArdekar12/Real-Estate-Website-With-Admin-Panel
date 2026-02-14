@@ -25,7 +25,10 @@ export default function OverviewSection() {
   }
 
   return (
-    <section className="w-full flex flex-col md:flex-row items-center justify-between py-4">
+    <section
+      id="overview"
+      className="w-full flex flex-col md:flex-row items-center justify-between py-4"
+    >
       <div className="w-full md:max-w-[45%]">
         <img
           className="w-full aspect-square object-cover rounded-full"

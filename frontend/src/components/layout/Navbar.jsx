@@ -12,6 +12,7 @@ import {
   FaUserShield,
 } from "react-icons/fa";
 import { IoMenu, IoClose } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const { isAdmin, logout } = useContext(AuthContext);

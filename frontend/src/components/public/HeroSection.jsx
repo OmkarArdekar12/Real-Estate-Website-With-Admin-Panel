@@ -1,41 +1,39 @@
 import { useEffect, useState } from "react";
-import API from "../../api/axios";
+import API from "../../api/axios.js";
 
 export default function HeroSection() {
   const [hero, setHero] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchHero = async () => {
-    //   try {
-    //     const res = await API.get("/hero");
-    //     setHero(res.data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
+    const fetchHero = async () => {
+      try {
+        const res = await API.get("/hero");
 
-    // fetchHero();
-    setHero({
-      _id: "664c1234abcde12345678901",
-      title: "INFINITY",
-      subtitle: "Luxury Living Redefined",
-      description:
-        "Experience premium lifestyle apartments designed with modern architecture, world-class amenities, and seamless connectivity in the heart of the city.",
-      image: {
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-        public_id: "RealEstate_Project/hero_sample",
-      },
-      createdAt: "2025-06-01T10:30:00.000Z",
-      updatedAt: "2025-06-01T10:30:00.000Z",
-    });
+        if (res.data) {
+          setHero(res.data);
+        }
+      } catch (err) {
+        console.log("Failed to fetch hero:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHero();
   }, []);
 
-  if (!hero) {
+  if (loading) {
     return (
       <div className="h-screen flex items-center justify-center">
         Loading...
       </div>
     );
+  }
+
+  if (!hero) {
+    toast.error("Hero Section not available", { id: "hero-section-error" });
+    return;
   }
 
   return (
@@ -44,7 +42,7 @@ export default function HeroSection() {
         <img
           className="w-full object-cover h-auto rounded-md"
           src={hero?.image?.url}
-          alt=""
+          alt={hero?.title}
         />
       </div>
 
@@ -52,14 +50,17 @@ export default function HeroSection() {
         <h1 className="text-4xl md:text-6xl font-bold font-serif tracking-wide mb-4">
           {hero.title}
         </h1>
+
         <h2 className="text-xl md:text-2xl mb-4 text-yellow-400">
           {hero.subtitle}
         </h2>
-        <p className="text-md md:text-lg mb-4 text-gray-200">
+
+        <p className="text-md md:text-lg mb-4 text-gray-200 text-center md:text-left">
           {hero.description}
         </p>
+
         <a
-          href="#amenties"
+          href="#amenities"
           className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-500 transition duration-300"
         >
           Explore More

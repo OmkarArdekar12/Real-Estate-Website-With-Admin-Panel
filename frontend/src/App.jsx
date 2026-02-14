@@ -5,10 +5,12 @@ import AdminDashboard from "./pages/AdminDashboard.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
+import CustomToaster from "./components/common/CustomNotification.jsx";
 
 const App = () => {
   return (
     <div className="App">
+      <CustomToaster />
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
