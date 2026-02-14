@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import toast from "react-hot-toast";
 import SectionLoader from "../common/SectionLoader";
+import { motion } from "framer-motion";
 
 export default function OverviewSection() {
   const [data, setData] = useState(null);
@@ -35,7 +36,11 @@ export default function OverviewSection() {
   }
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.25, once: true }}
       id="overview"
       className="w-full flex flex-col md:flex-row items-center justify-between py-4"
     >
@@ -56,6 +61,6 @@ export default function OverviewSection() {
           {data.description}
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 }
