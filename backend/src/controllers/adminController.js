@@ -29,8 +29,25 @@ export const loginAdmin = async (req, res) => {
   });
 };
 
-export const logoutAdmin = async (req, res) => {
-  req.session.destroy(() => {
+export const logoutAdmin = (req, res) => {
+  try {
+    if (req.session) {
+      req.session.destroy((err) => {
+        if (err) {
+          console.log("Session destroy error:", err);
+        }
+      });
+    }
+
+    res.clearCookie("connect.sid", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
+    });
+
     return res.json({ message: "Logged out successfully" });
-  });
+  } catch (err) {
+    console.log("Logout Error:", err.message);
+    return res.status(500).json({ message: "Logout failed" });
+  }
 };
