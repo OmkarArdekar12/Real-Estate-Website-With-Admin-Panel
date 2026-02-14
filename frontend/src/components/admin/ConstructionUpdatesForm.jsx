@@ -21,12 +21,14 @@ export default function ConstructionUpdatesForm() {
   const [fetching, setFetching] = useState(true);
 
   const fetchUpdates = async () => {
+    setFetching(true);
     try {
       const res = await API.get("/construction");
       if (res.data) {
         setUpdates(res.data);
       }
     } catch (err) {
+      setUpdates([]);
       toast.error("Failed to fetch construction updates", {
         id: "construction-fetch-error",
       });
@@ -64,13 +66,15 @@ export default function ConstructionUpdatesForm() {
 
   const handleSubmit = async () => {
     if (!form.label.trim()) {
-      return toast.error("Label required", { id: "construction-error" });
+      toast.error("Label required", { id: "construction-error" });
+      return;
     }
 
     if (form.progress < 0 || form.progress > 100) {
-      return toast.error("Progress must be between 0 and 100", {
+      toast.error("Progress must be between 0 and 100", {
         id: "construction-error",
       });
+      return;
     }
 
     try {
