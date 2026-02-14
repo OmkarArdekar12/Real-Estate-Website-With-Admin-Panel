@@ -9,6 +9,8 @@ import amenityRoutes from "./routes/amenityRoutes.js";
 import constructionRoutes from "./routes/constructionRoutes.js";
 import faqRoutes from "./routes/faqRoutes.js";
 import connectToDatabase from "./config/dbConnect.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
+import MongoStore from "connect-mongo";
 
 dotenv.config();
 
@@ -41,6 +43,17 @@ app.use(
   }),
 );
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+
 app.use("/api/hero", heroRoutes);
 app.use("/api/sections", sectionRoutes);
 app.use("/api/amenities", amenityRoutes);
@@ -50,6 +63,12 @@ app.use("/api/faqs", faqRoutes);
 app.get("/", (req, res) => {
   return res.send("Real Estate Website with Admin Panel Backend is Running");
 });
+
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route Not Found" });
+});
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`RealEstate Backend Server running on port ${PORT}`);
