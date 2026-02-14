@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function AmenityForm() {
   const [amenities, setAmenities] = useState([]);
@@ -21,8 +22,11 @@ export default function AmenityForm() {
   const fetchAmenities = async () => {
     try {
       const res = await API.get("/amenities");
-      setAmenities(res.data);
+      if (res.data) {
+        setAmenities(res.data);
+      }
     } catch (err) {
+      setAmenities([]);
       toast.error("Failed to fetch amenities", { id: "amenity-fetch-error" });
     } finally {
       setFetching(false);
@@ -53,15 +57,18 @@ export default function AmenityForm() {
 
   const handleSubmit = async () => {
     if (!form.title.trim()) {
-      return toast.error("Title required", { id: "amenity-error" });
+      toast.error("Title required", { id: "amenity-error" });
+      return;
     }
 
     if (!form.description.trim()) {
-      return toast.error("Description required", { id: "amenity-error" });
+      toast.error("Description required", { id: "amenity-error" });
+      return;
     }
 
     if (!editingId && !form.image) {
-      return toast.error("Image required", { id: "amenity-error" });
+      toast.error("Image required", { id: "amenity-error" });
+      return;
     }
 
     try {
@@ -124,7 +131,7 @@ export default function AmenityForm() {
   };
 
   if (fetching) {
-    return <div className="w-full py-20 text-center">Loading Amenities...</div>;
+    return <SectionLoader text="Loading Amenities..." />;
   }
 
   return (

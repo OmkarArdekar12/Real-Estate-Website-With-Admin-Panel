@@ -30,6 +30,12 @@ export default function AboutForm() {
           setPreview(res.data.image?.url || "");
         }
       } catch (err) {
+        setData({
+          title: "",
+          description: "",
+          image: null,
+        });
+        setPreview("");
         toast.error("Failed to fetch About section", {
           id: "about-fetch-error",
         });
