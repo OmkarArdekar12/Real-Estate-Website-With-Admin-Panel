@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
 import CustomToaster from "./components/common/CustomNotification.jsx";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const App = () => {
   useEffect(() => {
