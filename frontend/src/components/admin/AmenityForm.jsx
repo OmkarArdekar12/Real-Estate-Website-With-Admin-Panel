@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import API from "../../api/axios";
+import toast from "react-hot-toast";
 import ButtonLoader from "../common/ButtonLoader";
 import SectionLoader from "../common/SectionLoader";
 
