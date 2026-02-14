@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
       if (new Date().getTime() > parseInt(expiry)) {
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminExpiry");
+        localStorage.removeItem("realestate_visited");
         setIsAdmin(false);
         setLoading(false);
         return;
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         setIsAdmin(false);
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminExpiry");
+        localStorage.removeItem("realestate_visited");
       } finally {
         setLoading(false);
       }
@@ -60,6 +62,7 @@ export const AuthProvider = ({ children }) => {
       setIsAdmin(false);
       localStorage.removeItem("adminToken");
       localStorage.removeItem("adminExpiry");
+      localStorage.removeItem("realestate_visited");
       return true;
     } catch (err) {
       console.log("Failed to logout");
