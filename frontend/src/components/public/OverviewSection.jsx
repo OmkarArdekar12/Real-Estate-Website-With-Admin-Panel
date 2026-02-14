@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import toast from "react-hot-toast";
+import SectionLoader from "../common/SectionLoader";
 
 export default function OverviewSection() {
   const [data, setData] = useState(null);
@@ -8,6 +9,7 @@ export default function OverviewSection() {
 
   useEffect(() => {
     const fetchOverview = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/sections/overview");
 
@@ -25,7 +27,7 @@ export default function OverviewSection() {
   }, []);
 
   if (loading) {
-    return <div className="w-full py-20 text-center">Loading Overview...</div>;
+    return <SectionLoader text="Loading Overview..." />;
   }
 
   if (!data) {
