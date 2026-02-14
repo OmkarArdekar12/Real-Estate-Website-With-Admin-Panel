@@ -62,7 +62,28 @@ app.use("/api/construction", constructionRoutes);
 app.use("/api/faqs", faqRoutes);
 
 app.get("/", (req, res) => {
-  return res.send("RealEstate Website with Admin Panel Backend is Running");
+  return res.send(`
+    <div style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+      <h1>RealEstate Backend is Running</h1>
+      <p>Admin Panel & API Server is active.</p>
+      <a 
+        href="${FRONTEND_URL}" 
+        target="_blank"
+        style="
+          display:inline-block;
+          margin-top:20px;
+          padding:12px 25px;
+          background-color:#facc15;
+          color:black;
+          text-decoration:none;
+          font-weight:bold;
+          border-radius:8px;
+        "
+      >
+        Visit RealEstate-Horizons Website
+      </a>
+    </div>
+  `);
 });
 
 app.use((req, res, next) => {
