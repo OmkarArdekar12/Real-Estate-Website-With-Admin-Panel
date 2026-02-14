@@ -58,6 +58,8 @@ export const AuthProvider = ({ children }) => {
     try {
       await API.post("/admin/logout");
       setIsAdmin(false);
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminExpiry");
       return true;
     } catch (err) {
       console.log("Failed to logout");
