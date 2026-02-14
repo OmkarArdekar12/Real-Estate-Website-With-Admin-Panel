@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
+import SectionLoader from "../common/SectionLoader";
 
 export default function ConnectivitySection() {
   const [data, setData] = useState(null);
@@ -7,6 +8,7 @@ export default function ConnectivitySection() {
 
   useEffect(() => {
     const fetchConnectivity = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/sections/connectivity");
 
@@ -24,13 +26,11 @@ export default function ConnectivitySection() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="w-full py-20 text-center">Loading Connectivity...</div>
-    );
+    return <SectionLoader text="Loading Nearby Connectivity" />;
   }
 
   if (!data) {
-    return null;
+    return;
   }
 
   return (
