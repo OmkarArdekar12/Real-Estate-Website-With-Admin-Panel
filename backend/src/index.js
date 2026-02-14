@@ -31,27 +31,25 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false,
-      maxAge: 3000 * 60 * 60,
-    },
-  }),
-);
+const mongoStore = MongoStore.create({
+  mongoUrl: process.env.MONGODB_URI,
+});
+
+mongoStore.on("connected", () => {
+  console.log("RealEstate Mongo Session Store connected successfully");
+});
 
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI,
-    }),
+    store: mongoStore,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 1000 * 60 * 60 * 3,
+    },
   }),
 );
 
@@ -63,7 +61,7 @@ app.use("/api/construction", constructionRoutes);
 app.use("/api/faqs", faqRoutes);
 
 app.get("/", (req, res) => {
-  return res.send("Real Estate Website with Admin Panel Backend is Running");
+  return res.send("RealEstate Website with Admin Panel Backend is Running");
 });
 
 app.use((req, res, next) => {
