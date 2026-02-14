@@ -6,8 +6,20 @@ import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
 import CustomToaster from "./components/common/CustomNotification.jsx";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("realestate_visited");
+    if (!hasVisited) {
+      toast.success("Welcome to Real Estate — Rising Beyond Horizons", {
+        id: "welcome-toast",
+        duration: 4000,
+      });
+      localStorage.setItem("realestate_visited", "true");
+    }
+  }, []);
+
   return (
     <div className="App">
       <CustomToaster />
