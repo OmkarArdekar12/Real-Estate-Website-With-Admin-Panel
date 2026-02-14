@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function ConstructionUpdatesForm() {
   const [updates, setUpdates] = useState([]);
@@ -80,7 +81,9 @@ export default function ConstructionUpdatesForm() {
       formData.append("description", form.description);
       formData.append("progress", form.progress);
 
-      if (form.image) formData.append("image", form.image);
+      if (form.image) {
+        formData.append("image", form.image);
+      }
 
       if (editingId) {
         await API.put(`/construction/${editingId}`, formData, {
@@ -133,11 +136,7 @@ export default function ConstructionUpdatesForm() {
   };
 
   if (fetching) {
-    return (
-      <div className="w-full py-20 text-center">
-        Loading Construction Updates...
-      </div>
-    );
+    return <SectionLoader text="Loading Construction Updates..." />;
   }
 
   return (

@@ -78,7 +78,9 @@ export default function AmenityForm() {
       formData.append("title", form.title);
       formData.append("description", form.description);
 
-      if (form.image) formData.append("image", form.image);
+      if (form.image) {
+        formData.append("image", form.image);
+      }
 
       if (editingId) {
         await API.put(`/amenities/${editingId}`, formData, {
