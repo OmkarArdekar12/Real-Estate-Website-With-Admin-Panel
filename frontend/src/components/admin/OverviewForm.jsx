@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function OverviewForm() {
   const [data, setData] = useState({
@@ -30,6 +31,12 @@ export default function OverviewForm() {
           setPreview(res.data.image?.url || "");
         }
       } catch (err) {
+        setData({
+          title: "",
+          description: "",
+          image: null,
+        });
+        setPreview("");
         const message =
           err.response?.data?.message ||
           err.response?.data?.errors?.[0]?.msg ||
@@ -58,15 +65,18 @@ export default function OverviewForm() {
 
   const handleSave = async () => {
     if (!data.title.trim()) {
-      return toast.error("Title is required", { id: "overview-error" });
+      toast.error("Title is required", { id: "overview-error" });
+      return;
     }
 
     if (!data.description.trim()) {
-      return toast.error("Description is required", { id: "overview-error" });
+      toast.error("Description is required", { id: "overview-error" });
+      return;
     }
 
     if (!preview) {
-      return toast.error("Image is required", { id: "overview-error" });
+      toast.error("Image is required", { id: "overview-error" });
+      return;
     }
 
     try {
@@ -106,7 +116,7 @@ export default function OverviewForm() {
   };
 
   if (fetching) {
-    return <div className="w-full py-20 text-center">Loading Overview...</div>;
+    return <SectionLoader text="Loading Overview..." />;
   }
 
   return (
