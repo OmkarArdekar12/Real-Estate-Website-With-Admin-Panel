@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
+import SectionLoader from "../common/SectionLoader";
 
 export default function ConstructionSection() {
   const [updates, setUpdates] = useState([]);
@@ -7,6 +8,7 @@ export default function ConstructionSection() {
 
   useEffect(() => {
     const fetchUpdates = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/construction");
 
@@ -24,14 +26,10 @@ export default function ConstructionSection() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="w-full py-20 text-center">
-        Loading Construction Updates...
-      </div>
-    );
+    return <SectionLoader text="Loading Construction Updates..." />;
   }
 
-  if (!updates.length) {
+  if (!updates || !updates.length) {
     return null;
   }
 
