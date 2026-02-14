@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import API from "../api/axios";
+import API from "../api/axios.js";
 
 export const AuthContext = createContext();
 
@@ -23,14 +23,23 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const res = await API.post("/admin/login", { email, password });
-    setIsAdmin(true);
-    return res;
+    try {
+      const res = await API.post("/admin/login", { email, password });
+      setIsAdmin(true);
+      return true;
+    } catch (err) {
+      setIsAdmin(false);
+    }
   };
 
   const logout = async () => {
-    await API.post("/admin/logout");
-    setIsAdmin(false);
+    try {
+      await API.post("/admin/logout");
+      setIsAdmin(false);
+      return true;
+    } catch (err) {
+      console.log("Failed to logout");
+    }
   };
 
   return (

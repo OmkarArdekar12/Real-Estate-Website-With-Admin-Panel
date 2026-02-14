@@ -11,6 +11,7 @@ import faqRoutes from "./routes/faqRoutes.js";
 import connectToDatabase from "./config/dbConnect.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import MongoStore from "connect-mongo";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 
@@ -54,6 +55,7 @@ app.use(
   }),
 );
 
+app.use("/api/admin", adminRoutes);
 app.use("/api/hero", heroRoutes);
 app.use("/api/sections", sectionRoutes);
 app.use("/api/amenities", amenityRoutes);
