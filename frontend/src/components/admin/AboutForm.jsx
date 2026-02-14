@@ -17,6 +17,7 @@ export default function AboutForm() {
 
   useEffect(() => {
     const fetchAbout = async () => {
+      setFetching(true);
       try {
         const res = await API.get("/sections/about");
 

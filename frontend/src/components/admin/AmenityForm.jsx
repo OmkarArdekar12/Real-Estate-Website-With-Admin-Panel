@@ -20,6 +20,7 @@ export default function AmenityForm() {
   const [fetching, setFetching] = useState(true);
 
   const fetchAmenities = async () => {
+    setFetching(true);
     try {
       const res = await API.get("/amenities");
       if (res.data) {
