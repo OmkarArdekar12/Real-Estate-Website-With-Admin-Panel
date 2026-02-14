@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios.js";
 import toast from "react-hot-toast";
+import SectionLoader from "../common/SectionLoader.jsx";
 
 export default function HeroSection() {
   const [hero, setHero] = useState(null);
@@ -8,6 +9,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     const fetchHero = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/hero");
 
@@ -25,11 +27,7 @@ export default function HeroSection() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <SectionLoader />;
   }
 
   if (!hero) {
