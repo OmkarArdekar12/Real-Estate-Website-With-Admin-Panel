@@ -4,6 +4,7 @@ import ConnectivitySection from "../components/public/ConnectivitySection.jsx";
 import AboutSection from "../components/public/AboutSection.jsx";
 import AmenitiesSection from "../components/public/Amenities.jsx";
 import ConstructionSection from "../components/public/Construction.jsx";
+import FaqSection from "../components/public/FAQ.jsx";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
         <AmenitiesSection />
         <AboutSection />
         <ConstructionSection />
+        <FaqSection />
       </div>
     </main>
   );
