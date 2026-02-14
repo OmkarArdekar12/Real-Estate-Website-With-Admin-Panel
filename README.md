@@ -355,7 +355,7 @@ REAL-ESTATE-WEBSITE-WITH-ADMIN-PANEL
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/OmkarArdekar12/Real-Estate-Website-With-Admin-Panel
+git clone https://github.com/OmkarArdekar12/Real-Estate-Website-With-Admin-Panel.git
 cd Real-Estate-Website-With-Admin-Panel
 ```
 
