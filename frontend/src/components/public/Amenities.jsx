@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-// import API from "../../api/axios";
+import API from "../../api/axios";
+import toast from "react-hot-toast";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -10,57 +11,32 @@ import "swiper/css/pagination";
 
 export default function AmenitiesSection() {
   const [amenities, setAmenities] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchAmenities = async () => {
-    //   const res = await API.get("/amenities");
-    //   setAmenities(res.data);
-    // };
-    // fetchAmenities();
+    const fetchAmenities = async () => {
+      try {
+        const res = await API.get("/amenities");
+        if (res.data) {
+          setAmenities(res.data);
+        }
+      } catch (err) {
+        setAmenities([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setAmenities([
-      {
-        _id: "1",
-        title: "Swimming Pool",
-        description: "Olympic size temperature-controlled pool.",
-        image: {
-          url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-        },
-      },
-      {
-        _id: "2",
-        title: "Modern Gym",
-        description: "Fully equipped state-of-the-art fitness center.",
-        image: {
-          url: "https://images.unsplash.com/photo-1554284126-aa88f22d8b74",
-        },
-      },
-      {
-        _id: "3",
-        title: "Club House",
-        description: "Elegant community space for gatherings.",
-        image: {
-          url: "https://images.unsplash.com/photo-1598300053634-3c9f8edb62f0",
-        },
-      },
-      {
-        _id: "4",
-        title: "Children Play Area",
-        description: "Safe and fun environment for kids.",
-        image: {
-          url: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9",
-        },
-      },
-      {
-        _id: "5",
-        title: "Landscape Garden",
-        description: "Beautifully designed green open spaces.",
-        image: {
-          url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-        },
-      },
-    ]);
+    fetchAmenities();
   }, []);
+
+  if (loading) {
+    return <div className="w-full py-20 text-center">Loading Amenities...</div>;
+  }
+
+  if (!amenities.length) {
+    return;
+  }
 
   return (
     <section id="amenities" className="w-full py-16">
@@ -91,10 +67,8 @@ export default function AmenitiesSection() {
                 alt={item.title}
                 className="w-full aspect-square object-cover"
               />
-
               <div className="p-6">
                 <h2 className="text-xl font-semibold mb-3">{item.title}</h2>
-
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {item.description}
                 </p>

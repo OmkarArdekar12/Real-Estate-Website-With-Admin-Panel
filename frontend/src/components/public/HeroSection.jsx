@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios.js";
+import toast from "react-hot-toast";
 
 export default function HeroSection() {
   const [hero, setHero] = useState(null);
@@ -32,7 +33,6 @@ export default function HeroSection() {
   }
 
   if (!hero) {
-    toast.error("Hero Section not available", { id: "hero-section-error" });
     return;
   }
 

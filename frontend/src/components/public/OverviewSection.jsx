@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
+import toast from "react-hot-toast";
 
 export default function OverviewSection() {
   const [data, setData] = useState(null);
@@ -28,9 +29,6 @@ export default function OverviewSection() {
   }
 
   if (!data) {
-    toast.error("Overview Section not available", {
-      id: "overview-section-error",
-    });
     return;
   }
 
