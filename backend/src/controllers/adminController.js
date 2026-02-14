@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -10,7 +11,16 @@ export const loginAdmin = async (req, res) => {
 
   if (email === adminEmail && password === adminPassword) {
     req.session.isAdmin = true;
-    return res.json({ message: "Login successful" });
+    const token = jwt.sign(
+      {
+        email: process.env.ADMIN_EMAIL,
+        role: "admin",
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "3h" },
+    );
+
+    return res.json({ message: "Login successful", token });
   }
 
   return res.status(401).json({ message: "Invalid credentials" });
