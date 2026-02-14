@@ -1,4 +1,5 @@
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaRegCopyright } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -16,7 +17,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li>
               <a href="#hero" className="hover:text-yellow-400">
-                Main
+                Top
               </a>
             </li>
             <li>
@@ -45,17 +46,26 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold pb-4 text-white">Contact Us</h3>
           <div className="flex space-x-4 text-xl">
-            <FaGithub className="hover:text-yellow-400 cursor-pointer" />
-            <FaLinkedinIn className="hover:text-yellow-400 cursor-pointer" />
+            <a href="https://github.com/OmkarArdekar12" target="_blank">
+              <FaGithub className="hover:text-yellow-400 cursor-pointer" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/omkarardekar09"
+              target="_blank"
+            >
+              <FaLinkedinIn className="hover:text-yellow-400 cursor-pointer" />
+            </a>
           </div>
         </div>
       </div>
 
       <a
         href="https://github.com/OmkarArdekar12/Real-Estate-Website-With-Admin-Panel"
-        className="block border-t border-gray-700 mt-12 pt-6 text-center text-sm hover:underline"
+        target="_blank"
+        className="w-full flex items-center justify-center flex-wrap gap-2 border-t border-gray-700 mt-12 pt-6 text-center text-sm hover:underline"
       >
-        © {new Date().getFullYear()} RealEstate. All rights reserved.
+        <FaRegCopyright className="size-4" /> {new Date().getFullYear()}{" "}
+        RealEstate. All rights reserved.
       </a>
     </footer>
   );
