@@ -50,8 +50,8 @@ export const createOrUpdateHero = async (req, res) => {
     });
 
     return res.status(201).json({ message: "Hero Created Successfully", hero });
-  } catch (error) {
+  } catch (err) {
     console.log("Error in Get Hero: ", err.message);
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: err.message });
   }
 };
