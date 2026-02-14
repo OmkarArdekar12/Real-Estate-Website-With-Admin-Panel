@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import SectionLoader from "../common/SectionLoader";
+import { motion } from "framer-motion";
 
 export default function AboutSection() {
   const [data, setData] = useState(null);
@@ -34,7 +35,11 @@ export default function AboutSection() {
   }
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.2, once: true }}
       id="about"
       className="w-full flex flex-col md:flex-row items-center justify-between py-4"
     >
@@ -55,6 +60,6 @@ export default function AboutSection() {
           {data.description}
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 }
