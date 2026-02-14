@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../../api/axios.js";
 import toast from "react-hot-toast";
 import SectionLoader from "../common/SectionLoader.jsx";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const [hero, setHero] = useState(null);
@@ -35,7 +36,11 @@ export default function HeroSection() {
   }
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.2, once: true }}
       id="hero"
       className="w-full flex flex-col md:flex-row items-center justify-between py-4 px-8 md:px-10 lg:px-20"
     >
@@ -67,6 +72,6 @@ export default function HeroSection() {
           Explore More
         </a>
       </div>
-    </header>
+    </motion.header>
   );
 }
