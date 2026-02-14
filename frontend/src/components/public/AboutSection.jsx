@@ -39,7 +39,7 @@ export default function AboutSection() {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ amount: 0.2, once: true }}
+      viewport={{ amount: 0.25, once: true }}
       id="about"
       className="w-full flex flex-col md:flex-row items-center justify-between py-4"
     >
