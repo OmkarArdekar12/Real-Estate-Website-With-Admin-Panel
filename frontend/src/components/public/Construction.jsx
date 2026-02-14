@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import SectionLoader from "../common/SectionLoader";
+import { motion } from "framer-motion";
 
 export default function ConstructionSection() {
   const [updates, setUpdates] = useState([]);
@@ -34,7 +35,14 @@ export default function ConstructionSection() {
   }
 
   return (
-    <section id="construction" className="w-full flex flex-col gap-3 py-20">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.25, once: true }}
+      id="construction"
+      className="w-full flex flex-col gap-3 py-20"
+    >
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-serif font-bold">
           Construction Updates
@@ -71,6 +79,6 @@ export default function ConstructionSection() {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
