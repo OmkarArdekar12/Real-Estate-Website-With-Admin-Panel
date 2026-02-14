@@ -49,9 +49,12 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-6">
       <div className="bg-white shadow-xl rounded-lg w-full max-w-md p-10">
-        <h2 className="text-3xl font-serif font-bold text-center pb-8">
-          Admin Login
-        </h2>
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <img src="/Logo.png" alt="Real Estate" className="w-[60%] h-auto" />
+          <h2 className="text-3xl font-serif font-bold text-center pb-8">
+            Admin Login
+          </h2>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
