@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function NearbyConnectivityForm() {
   const [data, setData] = useState({
@@ -30,6 +31,12 @@ export default function NearbyConnectivityForm() {
           setPreview(res.data.image?.url || "");
         }
       } catch (err) {
+        setData({
+          title: "",
+          description: "",
+          image: null,
+        });
+        setPreview("");
         toast.error(
           err.response?.data?.message || "Failed to fetch connectivity section",
           { id: "connectivity-fetch-error" },
@@ -113,11 +120,7 @@ export default function NearbyConnectivityForm() {
   };
 
   if (fetching) {
-    return (
-      <div className="w-full py-20 text-center">
-        Loading Connectivity Section...
-      </div>
-    );
+    return <SectionLoader text="Loading Nearby Connectivity..." />;
   }
 
   return (
