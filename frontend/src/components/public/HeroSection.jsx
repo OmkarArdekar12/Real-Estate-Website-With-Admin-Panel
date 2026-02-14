@@ -14,7 +14,7 @@ export default function HeroSection() {
           setHero(res.data);
         }
       } catch (err) {
-        console.log("Failed to fetch hero:", err);
+        setHero(null);
       } finally {
         setLoading(false);
       }
