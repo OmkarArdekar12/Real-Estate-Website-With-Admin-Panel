@@ -1,27 +1,34 @@
 import { useEffect, useState } from "react";
+import API from "../../api/axios";
 
 export default function AboutSection() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchAbout = async () => {
-    //   const res = await API.get("/sections/about");
-    //   setData(res.data);
-    // };
-    // fetchAbout();
+    const fetchAbout = async () => {
+      try {
+        const res = await API.get("/sections/about");
 
-    setData({
-      title: "About Infinity",
-      description:
-        "Infinity is developed by industry-leading architects and visionaries committed to delivering excellence. Our mission is to redefine urban living with unmatched quality and thoughtful design.",
-      image: {
-        url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
-      },
-    });
+        if (res.data) {
+          setData(res.data);
+        }
+      } catch {
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAbout();
   }, []);
 
+  if (loading) {
+    return <div className="w-full py-20 text-center">Loading About...</div>;
+  }
+
   if (!data) {
-    return null;
+    return;
   }
 
   return (
@@ -33,7 +40,7 @@ export default function AboutSection() {
         <img
           className="w-full h-auto object-cover rounded-md"
           src={data?.image?.url}
-          alt=""
+          alt={data?.title}
         />
       </div>
 
@@ -41,6 +48,7 @@ export default function AboutSection() {
         <h1 className="text-4xl md:text-6xl font-bold font-serif tracking-wide mb-4">
           {data.title}
         </h1>
+
         <p className="text-md md:text-lg mb-4 text-gray-200">
           {data.description}
         </p>
