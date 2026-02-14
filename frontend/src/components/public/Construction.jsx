@@ -1,46 +1,39 @@
 import { useEffect, useState } from "react";
-// import API from "../../api/axios";
+import API from "../../api/axios";
 
 export default function ConstructionSection() {
   const [updates, setUpdates] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const fetchUpdates = async () => {
-    //   const res = await API.get("/construction");
-    //   setUpdates(res.data);
-    // };
-    // fetchUpdates();
+    const fetchUpdates = async () => {
+      try {
+        const res = await API.get("/construction");
 
-    setUpdates([
-      {
-        _id: "1",
-        label: "January 2025",
-        description: "Foundation work completed successfully.",
-        progress: 30,
-        image: {
-          url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-        },
-      },
-      {
-        _id: "2",
-        label: "March 2025",
-        description: "Structural framework nearing completion.",
-        progress: 60,
-        image: {
-          url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc",
-        },
-      },
-      {
-        _id: "3",
-        label: "June 2025",
-        description: "Exterior finishing and interior plumbing in progress.",
-        progress: 85,
-        image: {
-          url: "https://images.unsplash.com/photo-1590650153855-d9e808231d41",
-        },
-      },
-    ]);
+        if (res.data) {
+          setUpdates(res.data);
+        }
+      } catch (err) {
+        setUpdates([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUpdates();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full py-20 text-center">
+        Loading Construction Updates...
+      </div>
+    );
+  }
+
+  if (!updates.length) {
+    return null;
+  }
 
   return (
     <section id="construction" className="w-full flex flex-col gap-3 py-20">
@@ -60,13 +53,16 @@ export default function ConstructionSection() {
               <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
               <h2 className="text-2xl font-semibold mb-3">{item.label}</h2>
             </div>
+
             <p className="text-gray-600 mb-2">{item.description}</p>
+
             <div className="w-full bg-gray-200 h-3 rounded-full mb-4">
               <div
                 className="bg-yellow-400 h-3 rounded-full transition-all duration-500"
-                style={{ width: `${item.progress}%` }}
+                style={{ width: `${item.progress || 0}%` }}
               ></div>
             </div>
+
             {item.image?.url && (
               <img
                 src={item.image.url}

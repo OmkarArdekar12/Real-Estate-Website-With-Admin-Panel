@@ -4,6 +4,7 @@ import HeroForm from "../components/admin/HeroForm";
 import OverviewForm from "../components/admin/OverviewForm";
 import NearbyConnectivityForm from "../components/admin/NearbyConnectivityForm";
 import AmenityForm from "../components/admin/AmenityForm";
+import ConstructionUpdatesForm from "../components/admin/ConstructionUpdatesForm";
 
 const AdminDashboard = () => {
   return (
@@ -14,7 +15,7 @@ const AdminDashboard = () => {
         <NearbyConnectivityForm />
         <AmenityForm />
         {/* <AboutSection /> */}
-        {/* <ConstructionSection /> */}
+        <ConstructionUpdatesForm />
         {/* <FaqSection /> */}
       </div>
     </div>
