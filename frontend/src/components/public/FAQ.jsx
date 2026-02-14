@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import { FaChevronDown } from "react-icons/fa";
 import SectionLoader from "../common/SectionLoader";
+import { motion } from "framer-motion";
 
 export default function FaqSection() {
   const [faqs, setFaqs] = useState([]);
@@ -37,7 +38,14 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="w-full py-20">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.25, once: true }}
+      id="faq"
+      className="w-full py-20"
+    >
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-serif font-bold">
           Frequently Asked Questions
@@ -78,6 +86,6 @@ export default function FaqSection() {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
