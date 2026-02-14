@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import toast from "react-hot-toast";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import SectionLoader from "../common/SectionLoader";
 
 export default function AmenitiesSection() {
   const [amenities, setAmenities] = useState([]);
@@ -15,6 +14,7 @@ export default function AmenitiesSection() {
 
   useEffect(() => {
     const fetchAmenities = async () => {
+      setLoading(true);
       try {
         const res = await API.get("/amenities");
         if (res.data) {
@@ -31,10 +31,10 @@ export default function AmenitiesSection() {
   }, []);
 
   if (loading) {
-    return <div className="w-full py-20 text-center">Loading Amenities...</div>;
+    return <SectionLoader text="Loading Amenities..." />;
   }
 
-  if (!amenities.length) {
+  if (!amenities || !amenities.length) {
     return;
   }
 
