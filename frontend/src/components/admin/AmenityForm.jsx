@@ -7,7 +7,6 @@ import SectionLoader from "../common/SectionLoader";
 export default function AmenityForm() {
   const [amenities, setAmenities] = useState([]);
   const [editingId, setEditingId] = useState(null);
-
   const [form, setForm] = useState({
     title: "",
     description: "",
