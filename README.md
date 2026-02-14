@@ -142,6 +142,7 @@ Real Estate is a full-stack, production-ready real estate showcase platform with
         Axios, Framer Motion (Scroll Animations),
         Swiper.js (Carousel Integration),
         React Hot Toast (Notification),
+        JavaScript, CSS, HTML,
         Lucide React & React Icons
       </td>
     </tr>
