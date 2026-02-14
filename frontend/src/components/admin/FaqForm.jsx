@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import API from "../../api/axios";
 import ButtonLoader from "../common/ButtonLoader";
+import SectionLoader from "../common/SectionLoader";
 
 export default function FaqForm() {
   const [faqs, setFaqs] = useState([]);
@@ -17,12 +18,14 @@ export default function FaqForm() {
   const [fetching, setFetching] = useState(true);
 
   const fetchFaqs = async () => {
+    setFetching(true);
     try {
       const res = await API.get("/faqs");
       if (res.data) {
         setFaqs(res.data);
       }
     } catch {
+      setFaqs([]);
       toast.error("Failed to fetch FAQs", { id: "faq-fetch-error" });
     } finally {
       setFetching(false);
@@ -44,11 +47,13 @@ export default function FaqForm() {
 
   const handleSubmit = async () => {
     if (!form.question.trim()) {
-      return toast.error("Question required", { id: "faq-error" });
+      toast.error("Question required", { id: "faq-error" });
+      return;
     }
 
     if (!form.answer.trim()) {
-      return toast.error("Answer required", { id: "faq-error" });
+      toast.error("Answer required", { id: "faq-error" });
+      return;
     }
 
     try {
@@ -87,7 +92,10 @@ export default function FaqForm() {
       await API.delete(`/faqs/${id}`);
       toast.success("FAQ Deleted", { id: "faq-delete" });
 
-      if (id === editingId) resetForm();
+      if (id === editingId) {
+        setEditingId(null);
+        resetForm();
+      }
 
       fetchFaqs();
     } catch {
@@ -98,7 +106,7 @@ export default function FaqForm() {
   };
 
   if (fetching) {
-    return <div className="w-full py-20 text-center">Loading FAQs...</div>;
+    return <SectionLoader text="Loading FAQs..." />;
   }
 
   return (
