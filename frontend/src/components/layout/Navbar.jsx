@@ -106,7 +106,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden bg-white shadow-lg px-6 py-4 space-y-4">
           {navItems.map((item, index) =>
-            item.link.startsWith("/") ? (
+            item.name === "Home" ? (
               <NavLink
                 key={index}
                 to={item.link}
