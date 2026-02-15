@@ -24,9 +24,43 @@ const FRONTEND_URL =
   process.env.FRONTEND_URL || "https://realestate-horizons.vercel.app";
 
 const corsOptions = {
-  origin: [FRONTEND_URL],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  origin: function (origin, callback) {
+    const allowedOrigins = [process.env.FRONTEND_URL];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
+  allowedHeaders: [
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+    "Cache-Control",
+    "Pragma",
+    "Expires",
+    "X-Forwarded-For",
+    "X-Forwarded-Proto",
+    "X-CSRF-Token",
+    "X-Access-Token",
+    "Access-Control-Allow-Origin",
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Methods",
+    "Access-Control-Allow-Credentials",
+  ],
+  exposedHeaders: [
+    "set-cookie",
+    "Authorization",
+    "Content-Length",
+    "Content-Type",
+  ],
   credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
+  maxAge: 86400,
 };
 app.use(cors(corsOptions));
 
