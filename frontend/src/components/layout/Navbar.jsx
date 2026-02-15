@@ -98,7 +98,11 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             className="text-2xl text-gray-700 cursor-pointer"
           >
-            {isOpen ? <IoClose /> : <IoMenu />}
+            {isOpen ? (
+              <IoClose className="size-7" />
+            ) : (
+              <IoMenu className="size-7" />
+            )}
           </button>
         </div>
       </nav>
