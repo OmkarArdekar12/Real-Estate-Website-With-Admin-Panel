@@ -1,6 +1,6 @@
 <h1 align="center" id="start">Real Estate Website With Admin Panel</h1>
 
-<h1 align="center" id="title"><img src="./frontend/public/Logo.png" width="45rem" valign="middle" /> <a href="https://realestate-horizons.vercel.app" target="_blank">RealEstate - Rising Beyond Horizons</a></h1>
+<h1 align="center" id="title" width="100%"><img src="./frontend/public/Logo.png" width="100rem" valign="middle" /> <a href="https://realestate-horizons.vercel.app" target="_blank">RealEstate - Rising Beyond Horizons</a></h1>
 
 <a href="https://realestate-horizons.vercel.app">
 <div align="center">
