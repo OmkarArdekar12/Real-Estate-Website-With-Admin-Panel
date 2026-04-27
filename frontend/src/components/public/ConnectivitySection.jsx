@@ -41,7 +41,7 @@ export default function ConnectivitySection() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ amount: 0.25, once: true }}
       id="connectivity"
-      className="w-full flex flex-col md:flex-row items-center justify-between py-4"
+      className="w-full flex flex-col text-center md:text-left md:flex-row items-center justify-between py-4"
     >
       <div className="w-full md:max-w-[45%]">
         <img
